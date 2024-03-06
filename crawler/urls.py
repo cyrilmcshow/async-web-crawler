@@ -21,3 +21,13 @@ class Urls:
 
     def get_urls(self):
         return list(self.url_states.values())
+
+    def set_status_downloading(self, url):
+        self.url_states[url]['status'] = UrlStatus.DOWNLOADING
+
+    def set_status_error(self, url):
+        self.url_states[url]['status'] = UrlStatus.ERROR
+
+    def set_status_done(self, url, download_url=None):
+        self.url_states[url]['status'] = UrlStatus.DONE
+        self.url_states[url]['download_url'] = download_url
