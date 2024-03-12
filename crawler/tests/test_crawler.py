@@ -7,10 +7,12 @@ from unittest.mock import AsyncMock
 import pytest
 from aiohttp.client import ClientResponse
 
-
 from crawler.main import build_urls_from_file
 from crawler.urls import UrlStatus, Urls
-from crawler.tests.downloader import Downloader
+from crawler.downloader import Downloader
+
+from crawler.app import build_application
+
 
 class Session:
     def __init__(self, response_codes):
@@ -25,7 +27,6 @@ class Session:
         context_manager = AsyncMock()
         context_manager.__aenter__.return_value = response
         return context_manager
-
 
 
 def test_build_urls_from_file():
@@ -72,3 +73,4 @@ async def test_fetch_urls():
     await downloader.fetch_from_queue()
     url = urls.url_states['https://example.com/image2.png']
     assert url['status'] == UrlStatus.ERROR
+

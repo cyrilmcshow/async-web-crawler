@@ -19,7 +19,6 @@ class Downloader:
                 return
             file_content = await response.read()
         await self.save_file_and_set_status_done(url, file_content)
-        # save file
 
     async def fetch_from_queue(self):
         url = await self.queue.get()
