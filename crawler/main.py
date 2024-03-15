@@ -31,7 +31,7 @@ async def main():
     app['urls'] = urls
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, 'localhost', 5000)
+    site = web.TCPSite(runner, 'localhost', 8000)
 
     queue = Queue()
     for url in urls.get_urls():
@@ -47,7 +47,7 @@ async def main():
         coros.append(site.start())
         for _ in range(workers):
             coros.append(downloader.run())
-        print('starting service at http://localhost:8080')
+        print('starting service at http://localhost:8000')
         await gather(*coros)
 
 
