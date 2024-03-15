@@ -1,4 +1,4 @@
-# 🕷 simple asyncio web scraper
+# 🕷 simple asyncio web crawler
 
 1. run `make install` to install all deps
 2. (*optional*) run `make install-dev` to install all dev deps
